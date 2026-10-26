@@ -1,59 +1,69 @@
-const produtos = require('../dados/produtos');
+const { lerBanco, salvarBanco } = require('../dados/produtosRepositorio');
 
-let proximoId = 4;
-
-function listar(req, res) {
-  res.json(produtos);
+async function listar(req, res) {
+  const banco = await lerBanco();
+  res.json(banco.produtos);
 }
 
-function buscarPorId(req, res) {
+async function buscarPorId(req, res) {
+  const banco = await lerBanco();
   const id = Number(req.params.id);
-  const produto= produtos.find(p => p.id === id);
-}
- if (!produto); {
-   return res.status(404).json({ erro: 'Produto não encontrado'});
- }
+  const produto = banco.produtos.find(p => p.id === id);
 
- res.json(produto);
-}
-
-function criar(req, res) {
-  const { nome, preco } = req.body;
-
-  if (!nome || !preco) {
-    return res.status(400).json({ erro: 'nome e preço são obrigatorios'});
+  if (!produto) {
+    return res.status(404).json({ erro: 'Produto não encontrado'});    
   }
 
-  const novoProduto = { id: proximoId++, nome, preco};
-  produtos.push(novoProduto);
+  res.json(produto);
+}
+
+async function criar (req, res) {
+  const {nome, preco} = req.body;
+
+  if (!nome || !preco) {
+    return res.status(400).json({ erro: 'Nome e preço são obrigatorios'});
+  }
+
+  const banco = await lerBanco();
+  const novoProduto = {id: banco.proximoId, nome, preco};
+
+  banco.produtos.push(novoProduto);
+  banco.proximoId++;
+  await salvarBanco(banco);
+
   res.status(201).json(novoProduto);
 }
 
-function atualizr(req, res) {
+async function atualizar(req, res) {
+  const banco = await lerBanco();
   const id = Number(req.params.id);
-  const produto = produtos.find(p => p.id === id);
+  const produto = banco.produtos.find(p => p.id === id);
 
   if (!produto) {
     return res.status(404).json({ erro: 'Produto não encontrado'});
   }
 
-  const { nome, preco} = req.body;
+  const { nome, preco } = req.body;
   if (nome !== undefined) produto.nome = nome;
   if (preco !== undefined) produto.preco = preco;
 
+  await salvarBanco(banco);
   res.json(produto);
 }
 
-function remover(req, res) {
+async function remover(req, res) {
+  const banco = await lerBanco();
   const id = Number(req.params.id);
-  const indice = produtos.findIndex(p => p.id === id);
+  const indice = banco.produtos.findIndex(p => p.id === id);
 
   if (indice === -1) {
     return res.status(404).json({ erro: 'Produto não encontrado'});
   }
 
-  produtos.splide(indice, 1);
-  res.status(204).send();
+  banco.produtos.splide(indice, 1);
+  await salvarBanco(banco);
+  res.status(204).send()
 }
 
-module.export = { listar, buscarPorId, criar, atualizar, remover };
+module.exports = { listar, buscarPorId, criar, atualizar, remover };
+
