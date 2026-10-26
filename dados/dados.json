@@ -1,8 +1,8 @@
 {
-    "proximiId": 4,
+    "proximoId": 4,
     "produtos": [
-        { "id": 1, "nome": "camiseta", "preco": 49.9 },
-        { "id": 2, "nome": "calça", "preco": 129.9},
-        { "id": 3, "nome": "Tenis", "preco": 150.9}      
+      { "id": 1, "nome": "camiseta", "preco": 49.9 },
+      { "id": 2, "nome": "calça",    "preco": 129.9 },
+      { "id": 3, "nome": "Tenis",    "preco": 150.9 }
     ]
-}
+  }
