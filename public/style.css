@@ -6,8 +6,8 @@
   }
   
   body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #333;
+    background: linear-gradient(135deg, #e0c3fc 0%, #fbc2eb 100%);
+    color: #4a4a4a;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,23 +20,23 @@
     max-width: 500px;
     background: rgba(255, 255, 255, 0.95);
     padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(180, 160, 200, 0.25);
     backdrop-filter: blur(10px);
   }
   
   h1 {
     text-align: center;
     margin-bottom: 30px;
-    color: #1e293b;
+    color: #5d546a;
     font-size: 28px;
   }
   
   h2 {
-    color: #475569;
+    color: #6c6378;
     font-size: 20px;
     margin: 30px 0 15px 0;
-    border-bottom: 2px solid #f1f5f9;
+    border-bottom: 2px solid #f5effa;
     padding-bottom: 8px;
   }
   
@@ -53,18 +53,19 @@
   input {
     width: 100%;
     padding: 12px 16px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border: 1px solid #e1d8eb;
+    border-radius: 10px;
     font-size: 16px;
     transition: all 0.3s ease;
-    background-color: #f8fafc;
+    background-color: #faf8fc;
+    color: #4a4a4a;
   }
   
   input:focus {
     outline: none;
-    border-color: #764ba2;
+    border-color: #bfa3db;
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.2);
+    box-shadow: 0 0 0 3px rgba(191, 163, 219, 0.3);
   }
   
   .botoes {
@@ -76,29 +77,29 @@
     flex: 1;
     padding: 12px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
   }
   
   #botao-salvar {
-    background-color: #764ba2;
+    background-color: #bfa3db;
     color: white;
   }
   
   #botao-salvar:hover {
-    background-color: #5a377d;
+    background-color: #ae90ca;
   }
   
   #botao-cancelar {
-    background-color: #e2e8f0;
-    color: #475569;
+    background-color: #f0e6f7;
+    color: #7d6b8d;
   }
   
   #botao-cancelar:hover {
-    background-color: #cbd5e1;
+    background-color: #e5d4f0;
   }
   
   #mensagem {
@@ -116,10 +117,10 @@
   }
   
   #lista li {
-    background: #f8fafc;
+    background: #faf8fc;
     padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    border: 1px solid #eedffa;
     display: flex;
     justify-content: space-between;
     align-items: center;
