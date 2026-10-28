@@ -1,20 +1,30 @@
 {
-  "proximoId": 6,
+  "proximoId": 9,
   "produtos": [
     {
-      "id": 1,
-      "nome": "Tec9",
-      "preco": 1081.98
-    },
-    {
       "id": 2,
-      "nome": "C4",
+      "nome": "C00",
       "preco": 23.88
     },
     {
       "id": 3,
       "nome": "Bazuka",
       "preco": 7101.5
+    },
+    {
+      "id": 6,
+      "nome": "oii",
+      "preco": 0.04
+    },
+    {
+      "id": 7,
+      "nome": "celular",
+      "preco": 1999
+    },
+    {
+      "id": 8,
+      "nome": "iphone 13",
+      "preco": 3450
     }
   ]
 }
