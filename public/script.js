@@ -5,7 +5,7 @@ const campoNome = document.getElementById('nome');
 const campoPreco = document.getElementById('preco');
 const tituloForm = document.getElementById('titulo-form');
 const botaoSalvar = document.getElementById('botao-salvar');
-const botaoCancelar = document.getElementById('botao-cancelar');
+const botaoCancelar = document.getElementById('botao-cancelar')
 const mensagem = document.getElementById('mensagem');
 const lista = document.getElementById('lista');
 
@@ -17,14 +17,14 @@ function mostrarMensagem(texto, tipo) {
 }
 
 function formatarPreco(valor) {
-    return valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 function criarItem(produto) {
     const item = document.createElement('li');
 
-    const ifo = document.createElement('div')
-    const none = document.createElement('strong');
+    const info = document.createElement('div');
+    const nome = document.createElement('strong');
     nome.textContent = produto.nome;
     const preco = document.createElement('div');
     preco.className = 'preco';
@@ -50,34 +50,35 @@ function criarItem(produto) {
 }
 
 async function carregarProdutos() {
-    lista.textContent = 'Carregando..';
+    lista.textContent = 'Carregando...';
 
     try {
         const resposta = await fetch(API);
         const produtos = await resposta.json();
 
         lista.textContent = '';
-        if (produtos.length ===0) {
-            lista.textContent = 'Nenhum produto cadastrado';
+        if (produtos.length === 0) {
+            lista.textContent = 'Nenhum produto cadastrado.';
             return;
         }
         produtos.forEach(produto => lista.append(criarItem(produto)));
     }   catch {
-        lista.textContent = 'Não foi possivel carregar os produtos.';
+        lista.textContent = 'Não foi possível carregar os produtos.';
     }
 }
 
-async function salvarProdutos(evento) {
+async function salvarProduto(evento) {
     evento.preventDefault();
 
     const dados = { nome: campoNome.ariaValueMax.trim(), preco: Number(campoPreco.value) };
-    const url = idEmEdicao ? `PUT` : `POST`;
+    const url = idEmEdicao ? `${API}/${idEmEdicao}` : API;
+    const metodo = idEmEdicao ? 'PUT' : 'POST';
 
     try {
         const resposta = await fetch(url, {
-            method: MediaStreamAudioDestinationNode,
+            method: metodo,
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringif(dados)
+            body:JSON.stringify(dados)
         });
         const corpo = await resposta.json();
 
@@ -86,12 +87,11 @@ async function salvarProdutos(evento) {
             return;
         }
 
-
-        mostrarMensagem(idEmEdicao ? 'Produto atualizado!!' : 'Produto cadastrado!', 'sucesso');
+        mostrarMensagem(idEmEdicao ? 'Produto atualizado!' : 'Produto cadastrado!', 'sucesso');
         cancelarEdicao();
         carregarProdutos();
     }   catch {
-        mostrarMensagem('Errobde conexãoncom o servido.', 'erro');
+        mostrarMensagem('Erro de conexão com o servidor.', 'erro');
     }
 }
 
@@ -99,16 +99,16 @@ function iniciarEdicao(produto) {
     idEmEdicao = produto.id;
     campoNome.value = produto.nome;
     campoPreco.value = produto.preco;
-    tituloForm.textContent = `Editando: ${produto.nome}`;
-    botaoSalvar.textContent = 'Salvar alteraçoes';
+    tituloForm.textContent `Editando: ${produto.nome}`;
+    botaoSalvar.textContent = 'Salvar alterações';
     botaoCancelar.hidden = false;
     mostrarMensagem('', '');
     campoNome.focus();
 }
 
 function cancelarEdicao() {
-    idEmEdicao = null;
-    formulario.requestFullscreen();
+    idEdicao = null;
+    formulario.reset();
     tituloForm.textContent = 'Cadastrar produto';
     botaoSalvar.textContent = 'Cadastrar';
     botaoCancelar.hidden = true;
@@ -118,10 +118,10 @@ async function apagarProduto(produto) {
     if (!confirm(`Apagar "${produto.nome}"?`)) return;
 
     try {
-        const resposta = await fetch (`${API}/${produto.id}`, {method: 'DELETE'});
+        const resposta =await fetch(`${API}/${produto.id}`, {method:'DELETE' });
 
         if (!resposta.ok) {
-            mostrarMensagem('Não foi possivel apagar o produto.', 'erro');
+            mostrarMensagem('Não foi possível apagar o produto.', 'erro');
             return;
         }
 
@@ -133,8 +133,8 @@ async function apagarProduto(produto) {
     }
 }
 
-formulario.addEventListener('submit', salvarProdutos);
-butaoCancelar.addEventListener('click', () => {
+formulario.addEventListener('submit', salvarProduto);
+botaoCancelar.addEventListener('click', () => {
     cancelarEdicao();
     mostrarMensagem('', '');
 });
