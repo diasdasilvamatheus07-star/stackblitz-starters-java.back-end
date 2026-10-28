@@ -1,4 +1,133 @@
-.body {
-    background-color: aqua;
-    text-decoration-color: brown;
-}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  main {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #1e293b;
+    font-size: 28px;
+  }
+  
+  h2 {
+    color: #475569;
+    font-size: 20px;
+    margin: 30px 0 15px 0;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 8px;
+  }
+  
+  #titulo-form {
+    margin-top: 0;
+  }
+  
+  #formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #764ba2;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.2);
+  }
+  
+  .botoes {
+    display: flex;
+    gap: 12px;
+  }
+  
+  button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  #botao-salvar {
+    background-color: #764ba2;
+    color: white;
+  }
+  
+  #botao-salvar:hover {
+    background-color: #5a377d;
+  }
+  
+  #botao-cancelar {
+    background-color: #e2e8f0;
+    color: #475569;
+  }
+  
+  #botao-cancelar:hover {
+    background-color: #cbd5e1;
+  }
+  
+  #mensagem {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 20px;
+  }
+  
+  #lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  #lista li {
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
