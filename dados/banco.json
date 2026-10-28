@@ -1,19 +1,14 @@
 {
-  "proximoId": 11,
+  "proximoId": 13,
   "produtos": [
     {
-      "id": 2,
-      "nome": "carroo",
-      "preco": 299.98
-    },
-    {
       "id": 3,
-      "nome": "Bazuka",
+      "nome": "iphone 17 pro max",
       "preco": 7101.5
     },
     {
       "id": 7,
-      "nome": "celular",
+      "nome": "Redmi note 15",
       "preco": 1999
     },
     {
@@ -28,8 +23,13 @@
     },
     {
       "id": 10,
-      "nome": "apple",
+      "nome": "apple watch",
       "preco": 1300
+    },
+    {
+      "id": 11,
+      "nome": "iphone 16",
+      "preco": 6780
     }
   ]
 }
